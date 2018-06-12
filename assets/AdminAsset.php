@@ -2,7 +2,6 @@
 
 namespace app\assets;
 
-
 use yii\web\AssetBundle;
 
 class AdminAsset extends AssetBundle
@@ -16,6 +15,7 @@ class AdminAsset extends AssetBundle
         'admin/css/site.css',
     ];
     public $js = [
+        'admin/js/bootstrap.min.js',
         'admin/js/plugins/morris/raphael.min.js',
         'admin/js/plugins/morris/morris.min.js',
         'admin/js/plugins/morris/morris-data.js',

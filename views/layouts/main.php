@@ -61,17 +61,7 @@ AppAsset::register($this);
     </div>
 
     <div class="container mtb">
-
-        <!-- BLOG POSTS LIST -->
-        <div class="col-lg-8">
-            <?= $content ?>
-        </div>
-
-        <!-- SIDEBAR -->
-        <div class="col-lg-4">
-            <?= $this->render('_sidebar') ?>
-        </div>
-
+        <?= $content ?>
     </div>
 </div>
 

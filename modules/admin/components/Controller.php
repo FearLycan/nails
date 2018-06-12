@@ -46,9 +46,9 @@ class Controller extends \app\components\Controller
      * @return bool
      * @throws \yii\web\BadRequestHttpException
      */
-    public function beforeAction($action)
+   /* public function beforeAction($action)
     {
         $this->view->registerJs('menuActive("' . $this->uniqueId . '");');
         return parent::beforeAction($action);
-    }
+    }*/
 }

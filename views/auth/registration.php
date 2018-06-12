@@ -19,36 +19,9 @@ $this->title = 'Rejestracja' . ' | ' . Yii::$app->params['name'];
         </div>
     </section>
 <?php else: ?>
-    <!--    <section class="slice-lg has-bg-cover bg-size-cover" id="register" style="background-image: url(../images/site/login-image-02.jpg); background-position: bottom center;">-->
-    <section class="slice-lg has-bg-cover bg-size-cover" id="register">
-        <div class="container">
-            <div class="row justify-content-center cols-xs-space">
-                <div class="col-lg-6">
-                    <div class="form-card form-card--style-2 z-depth-2-top">
-                        <div class="form-header text-center">
-                            <div class="form-header-icon">
-                                <i class="icon ion-log-in"></i>
-                            </div>
-                        </div>
-                        <div class="form-body">
-
-                            <div class="text-center px-2">
-                                <h4 class="heading heading-4 strong-400 mb-4">Utwórz swoje konto</h4>
-                            </div>
-
-                            <?= $this->render('_registration-form', [
-                                'model' => $model,
-                            ]) ?>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
+    <div class="login-form registration-form">
+        <?= $this->render('_registration-form', [
+            'model' => $model,
+        ]) ?>
+    </div>
 <?php endif; ?>
-
-<?php $this->beginBlock('script') ?>
-<?php $this->endBlock() ?>

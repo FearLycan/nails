@@ -30,15 +30,4 @@ class Controller extends \yii\web\Controller
         }
         throw new ForbiddenHttpException($message);
     }
-
-    /**
-     * @param \yii\base\Action $action
-     * @return bool
-     * @throws \yii\web\BadRequestHttpException
-     */
-    public function beforeAction($action)
-    {
-        $this->view->registerJs('menuActive("' . $this->uniqueId . '");');
-        return parent::beforeAction($action);
-    }
 }

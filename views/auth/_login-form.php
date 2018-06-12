@@ -1,58 +1,41 @@
 <?php
 
-use yii\helpers\Html;
 use yii\helpers\Url;
-use yii\widgets\ActiveForm;
+use kartik\form\ActiveForm;
 
 /* @var $model \app\models\forms\LoginForm */
 
 ?>
 
 <?php $form = ActiveForm::begin([
-    'id' => 'login-form',
-    'enableAjaxValidation' => false,
     'options' => ['class' => 'form-default'],
 ]) ?>
 
-<div class="row" style="margin-bottom: 10px;">
-    <div class="col-12">
-        <?= $form->field($model, 'email')->textInput([
-            'class' => 'form-control form-control-lg'
-        ]) ?>
-    </div>
+<h2 class="text-center">Sign in</h2>
+
+<?= $form->field($model, 'email', [
+    'addon' => ['prepend' => ['content' => '<i class="fa fa-user" aria-hidden="true"></i>']]
+])->textInput(['placeholder' => 'E-mail address'])->label(false); ?>
+
+<?= $form->field($model, 'password', [
+    'addon' => ['prepend' => ['content' => '<i class="fa fa-lock"></i></span>']],
+])->passwordInput(['placeholder' => 'Password'])->label(false); ?>
+
+<div class="form-group">
+    <button type="submit" class="btn btn-primary login-btn btn-block">Sign in</button>
 </div>
-
-<div class="row">
-    <div class="col-12">
-        <?= $form->field($model, 'password')->passwordInput([
-            'class' => 'form-control form-control-lg'
-        ]) ?>
-    </div>
+<div class="clearfix">
+    <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
+    <a href="#" class="pull-right">Forgot Password?</a>
 </div>
-
-<!--<div class="row">-->
-<!--    <div class="col-12">-->
-<!--        <div class="checkbox">-->
-<!--            <input type="checkbox" id="chkRemember">-->
-<!--            <label for="chkRemember">Zapamiętaj mnie</label>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-
-<div class="row">
-    <div class="col-12">
-        <?= Html::submitButton('Zaloguj się', ['class' => 'btn btn-styled btn-lg btn-block btn-base-1 mt-4']) ?>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-12">
-        <div class="mt-1 ">
-            <small>
-               <!-- <a href="<?/*= Url::toRoute(['site/reset']); */?>">Nie pamiętasz hasła?</a>-->
-            </small>
-        </div>
-    </div>
+<div class="or-seperator"><i>or</i></div>
+<p class="text-center">Login with your social media account</p>
+<div class="text-center social-btn">
+    <a href="#" class="btn btn-primary"><i class="fa fa-facebook"></i>&nbsp; Facebook</a>
+    <a href="#" class="btn btn-info"><i class="fa fa-twitter"></i>&nbsp; Twitter</a>
+    <a href="#" class="btn btn-danger"><i class="fa fa-google"></i>&nbsp; Google</a>
 </div>
 
 <?php ActiveForm::end() ?>
+
+<p class="text-center text-muted small">Don't have an account? <a href="<?= Url::to(['auth/registration']) ?>">Sign up here!</a></p>

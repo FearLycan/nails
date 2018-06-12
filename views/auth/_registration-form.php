@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\helpers\Url;
-use yii\widgets\ActiveForm;
+use kartik\form\ActiveForm;
 
 /* @var $model \app\models\forms\RegistrationForm */
 
@@ -10,59 +10,51 @@ use yii\widgets\ActiveForm;
 
 <?php $form = ActiveForm::begin([
     'enableAjaxValidation' => true,
-    'id' => 'registration-form',
-    'options' => ['class' => 'form-default mt-4'],
+    'options' => ['class' => 'form-default'],
 ]) ?>
 
-<div class="row" style="margin-bottom: 10px;">
-    <div class="col-md-6">
-        <?= $form->field($model, 'name')->textInput([
-            'class' => 'form-control form-control-lg'
-        ]) ?>
-    </div>
-
-    <div class="col-md-6">
-        <?= $form->field($model, 'email')->textInput([
-            'class' => 'form-control form-control-lg'
-        ]) ?>
-    </div>
-</div>
+<h2 class="text-center">Sign up</h2>
 
 <div class="row" style="margin-bottom: 10px;">
     <div class="col-md-6">
-        <?= $form->field($model, 'password_first')->passwordInput([
-            'class' => 'form-control form-control-lg'
-        ]) ?>
+        <?= $form->field($model, 'name', [
+            'addon' => ['prepend' => ['content' => '<i class="fa fa-user" aria-hidden="true"></i>']]
+        ])->textInput(['placeholder' => 'Nazwa'])->label(false); ?>
+    </div>
+
+    <div class="col-md-6">
+        <?= $form->field($model, 'email', [
+            'addon' => ['prepend' => ['content' => '<i class="fa fa-envelope" aria-hidden="true"></i>']]
+        ])->textInput(['placeholder' => 'Adres e-mail'])->label(false); ?>
+    </div>
+</div>
+
+<div class="row" style="margin-bottom: 10px;">
+    <div class="col-md-6">
+        <?= $form->field($model, 'password_first', [
+            'addon' => ['prepend' => ['content' => '<i class="fa fa-lock"></i></span>']],
+        ])->passwordInput(['placeholder' => 'Password'])->label(false); ?>
     </div>
     <div class="col-md-6">
-        <?= $form->field($model, 'password_second')->passwordInput([
-            'class' => 'form-control form-control-lg'
-        ]) ?>
+        <?= $form->field($model, 'password_second', [
+            'addon' => ['prepend' => ['content' => '<i class="fa fa-repeat"></i></span>']],
+        ])->passwordInput(['placeholder' => 'Powtórz hasło'])->label(false); ?>
     </div>
 </div>
 
-<div class="mt-1 ">
-    <small>
-        <a href="<?= Url::toRoute(['page/view' , 'slug' => 'regulamin']); ?>">Klikając "Zarejestruj się", akceptujesz nasze regulamin.</a>
-    </small>
+<div class="form-group">
+    <button type="submit" class="btn btn-primary login-btn btn-block">Sign up</button>
 </div>
-
-<div class="row">
-    <div class="col-12">
-        <?= Html::submitButton('Zarejestruj się', ['class' => 'btn btn-styled btn-lg btn-block btn-base-1 mt-4']) ?>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-12">
-        <div class="mt-1 ">
-            <small>
-               <!-- <a href="<?/*= Url::toRoute(['site/reset']); */?>">Nie pamiętasz hasła?</a>-->
-            </small>
-        </div>
-    </div>
+<div class="clearfix"></div>
+<div class="or-seperator"><i>or</i></div>
+<p class="text-center">Login with your social media account</p>
+<div class="text-center social-btn">
+    <a href="#" class="btn btn-primary"><i class="fa fa-facebook"></i>&nbsp; Facebook</a>
+    <a href="#" class="btn btn-info"><i class="fa fa-twitter"></i>&nbsp; Twitter</a>
+    <a href="#" class="btn btn-danger"><i class="fa fa-google"></i>&nbsp; Google</a>
 </div>
 
 <?php ActiveForm::end() ?>
 
+<p class="text-center text-muted small">Do you have an account? <a href="<?= Url::to(['auth/login']) ?>">Sign in here!</a></p>
 

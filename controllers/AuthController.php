@@ -62,9 +62,6 @@ class AuthController extends Controller
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            //$model->login();
-            //die(var_dump($model->errors));
-            //die(var_dump(Yii::$app->security->generatePasswordHash($model->password)));
             Yii::$app->user->identity->last_login_at = date('Y-m-d H:i:s');
             Yii::$app->user->identity->save(false, ['last_login_at']);
 
@@ -110,7 +107,7 @@ class AuthController extends Controller
             $model->auth_key = User::generateUniqueRandomString();
             $model->verification_code = User::generateUniqueRandomString();
             $model->save();
-            $model->sendEmail();
+            //$model->sendEmail();
             $status = true;
         }
 

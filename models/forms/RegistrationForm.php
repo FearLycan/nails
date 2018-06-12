@@ -17,8 +17,8 @@ class RegistrationForm extends User
     public function rules()
     {
         return [
-            ['name', 'unique', 'message' => 'Ten pseudonim jest już zajęty'],
-            [['name'], 'required', 'message' => 'Jaki będzie Twój pseudonim?'],
+            ['name', 'unique', 'message' => 'Ta nazwa jest już zajęta'],
+            [['name'], 'required', 'message' => 'Musisz podać swoją nazwę'],
             ['email', 'unique', 'message' => 'Ten adres jest już w użyciu'],
             [['email'], 'required', 'message' => 'Adres e-mail jest wymagany'],
             ['email', 'email', 'message' => 'Błędny adres e-mail'],
@@ -33,7 +33,7 @@ class RegistrationForm extends User
     public function attributeLabels()
     {
         return [
-            'name' => 'Pseudonim',
+            'name' => 'Nazwa',
             'email' => 'Adres e-mail',
             'password_first' => 'Hasło',
             'password_second' => 'Powtórz hasło',

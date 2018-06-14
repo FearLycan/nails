@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Category;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -61,6 +62,12 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+       /* $categories = Category::find()->all();
+
+        $this->view->params['categories'] = $categories;*/
+
+        return $this->render('index', [
+            //'categories' => $categories
+        ]);
     }
 }

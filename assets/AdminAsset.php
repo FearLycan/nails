@@ -9,17 +9,19 @@ class AdminAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'admin/css/sb-admin.css',
-        'admin/css/plugins/morris.css',
         'css/font-awesome.min.css',
-        'admin/css/site.css',
+        'administrator/css/sb-admin.css',
+        'administratorn/css/plugins/morris.css',
+        //'administrator/css/plugins/DataTables/datatables.min.css',
+        'administrator/css/site.css',
     ];
     public $js = [
-        'admin/js/bootstrap.min.js',
-        'admin/js/plugins/morris/raphael.min.js',
-        'admin/js/plugins/morris/morris.min.js',
-        'admin/js/plugins/morris/morris-data.js',
-        'admin/js/custom.js',
+        'administrator/js/bootstrap.min.js',
+        'administrator/js/plugins/morris/raphael.min.js',
+        'administrator/js/plugins/morris/morris.min.js',
+        'administrator/js/plugins/morris/morris-data.js',
+        //'administrator/js/plugins/DataTables/datatables.min.js',
+        'administrator/js/custom.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

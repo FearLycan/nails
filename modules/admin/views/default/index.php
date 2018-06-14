@@ -12,7 +12,6 @@ $this->title = 'Dashboard'
         </div>
     </div>
 </div>
-<!-- /.row -->
 
 <div class="row">
     <div class="col-lg-3 col-md-6">
@@ -104,7 +103,6 @@ $this->title = 'Dashboard'
         </div>
     </div>
 </div>
-<!-- /.row -->
 
 <div class="row">
     <div class="col-lg-12">
@@ -118,7 +116,6 @@ $this->title = 'Dashboard'
         </div>
     </div>
 </div>
-<!-- /.row -->
 
 <div class="row">
     <div class="col-lg-4">
@@ -255,7 +252,6 @@ $this->title = 'Dashboard'
         </div>
     </div>
 </div>
-<!-- /.row -->
 
 <div class="row">
     <div class="col-lg-12">

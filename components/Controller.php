@@ -1,4 +1,5 @@
 <?php
+
 namespace app\components;
 
 use yii\web\ForbiddenHttpException;
@@ -12,19 +13,22 @@ class Controller extends \yii\web\Controller
      * @param string|null $message
      * @throws NotFoundHttpException
      */
-    public function notFound($message = null) {
+    public function notFound($message = null)
+    {
         if ($message === null) {
             $message = 'Page not found';
         }
         throw new NotFoundHttpException($message);
     }
+
     /**
      * Throws ForbiddenHttpException.
      *
      * @param string|null $message
      * @throws ForbiddenHttpException
      */
-    public function accessDenied($message = null) {
+    public function accessDenied($message = null)
+    {
         if ($message === null) {
             $message = 'Nie jesteś uprawniony do przeglądania tej strony.';
         }

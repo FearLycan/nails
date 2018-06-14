@@ -45,7 +45,7 @@ AdminAsset::register($this);
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<?= Url::to(['/admin']) ?>">SB Admin</a>
+            <a class="navbar-brand" href="<?= Url::to(['/admin']) ?>"><?= Yii::$app->params['name'] ?> Admin Panel</a>
         </div>
         <!-- Top Menu Items -->
         <ul class="nav navbar-right top-nav">
@@ -159,6 +159,21 @@ AdminAsset::register($this);
                     <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                 </li>
                 <li>
+                    <a href="javascript:;" data-toggle="collapse" data-target="#demo">
+                        <i class="fa fa-hand-paper-o" aria-hidden="true"></i> Paznokcie <i class="fa fa-fw fa-caret-down"></i></a>
+                    <ul id="demo" class="collapse">
+                        <li>
+                            <a href="<?= Url::to(['/admin/category']) ?>"><i class="fa fa-folder" aria-hidden="true"></i> Kategorie</a>
+                        </li>
+                        <li>
+                            <a href="<?= Url::to(['/admin/item']) ?>"><i class="fa fa-list" aria-hidden="true"></i> Lista</a>
+                        </li>
+                        <li>
+                            <a href="<?= Url::to(['/admin/tag']) ?>"><i class="fa fa-tags" aria-hidden="true"></i> Tagi</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
                     <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
                 </li>
                 <li>
@@ -196,7 +211,7 @@ AdminAsset::register($this);
         <!-- /.navbar-collapse -->
     </nav>
 
-    <div id="page-wrapper">
+    <div id="page-wrapper" style="min-height: 900px;">
 
         <div class="container-fluid">
 
@@ -204,27 +219,22 @@ AdminAsset::register($this);
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        Dashboard
+                        <?= $this->title ?>
                         <small>Statistics Overview</small>
                     </h1>
-                    <ol class="breadcrumb">
-                        <li class="active">
-                            <i class="fa fa-dashboard"></i> Dashboard
-                        </li>
-                    </ol>
-
-                    <?= Breadcrumbs::widget([
-                        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                    ]) ?>
 
                     <?= Breadcrumbs::widget([
                         'homeLink' => [
-                            'label' => '<i class="fa fa-dashboard"></i>' . Html::encode(Yii::t('yii', 'Home')),
-                            'url' => Yii::$app->homeUrl,
+                            'label' => '<i class="fa fa-dashboard"></i>' . Html::encode(Yii::t('yii', ' Dashboard')),
+                            'url' => Url::to(['/admin']),
+                            'encode' => false
                         ],
                         'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
                     ])
                     ?>
+                </div>
+                <div class="col-lg-12">
+                    <hr style="margin-top: -1px;">
                 </div>
             </div>
             <!-- /.row -->
@@ -247,6 +257,9 @@ AdminAsset::register($this);
 </footer>-->
 
 <?php $this->endBody() ?>
+
+<?= $this->blocks['script'] ?>
+
 </body>
 </html>
 <?php $this->endPage() ?>

@@ -4,6 +4,7 @@
 
 /* @var $content string */
 
+use app\models\Category;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
@@ -48,12 +49,11 @@ AppAsset::register($this);
             <div class="row">
                 <div class="col-lg-12">
                     <ul class="category-menu">
-                        <li><a href="#">Humor</a></li>
-                        <li><a href="#">Filmiki</a></li>
-                        <li><a href="#">Laski</a></li>
-                        <li><a href="#">Komiksy</a></li>
-                        <li><a href="#">Galeria</a></li>
-                        <li><a href="#">Ciekawostki</a></li>
+                        <?php foreach (Category::find()->where(['status' => Category::STATUS_ACTIVE])->all() as $category): ?>
+                            <li>
+                                <a href="<?= \yii\helpers\Url::to(['category/view', 'slug' => $category->slug]) ?>"><?= $category->name ?></a>
+                            </li>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
             </div>

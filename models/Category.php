@@ -125,4 +125,13 @@ class Category extends ActiveRecord
             static::STATUS_INACTIVE,
         ];
     }
+
+    public static function saveCategory($array, $itemID)
+    {
+        $array = array_unique($array);
+
+        foreach ($array as $id) {
+            ItemCategory::connect($itemID, $id);
+        }
+    }
 }

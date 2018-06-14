@@ -2,13 +2,19 @@
 
 namespace app\modules\admin\controllers;
 
+use app\components\Helpers;
+use app\components\Inflector;
+use app\modules\admin\models\Category;
 use app\modules\admin\models\forms\ItemForm;
+use app\modules\admin\models\Tag;
 use Yii;
 use app\modules\admin\models\Item;
 use app\modules\admin\models\searches\ItemSearch;
 use app\modules\admin\components\Controller;
+use yii\helpers\ArrayHelper;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * ItemController implements the CRUD actions for Item model.
@@ -66,17 +72,37 @@ class ItemController extends Controller
     public function actionCreate()
     {
         $model = new ItemForm();
+        $model->scenario = ItemForm::SCENARIO_CREATE;
         $model->status = Item::STATUS_ACTIVE;
 
         if ($model->load(Yii::$app->request->post())) {
 
+            $model->myFile = UploadedFile::getInstance($model, 'myFile');
+            $randomString = Yii::$app->getSecurity()->generateRandomString(25);
+            $model->image = $randomString . '.' . $model->myFile->extension;
             $model->author_id = Yii::$app->user->identity->id;
-            $model->save();
-            return $this->redirect(['view', 'id' => $model->id]);
+            $model->title = Helpers::nameize($model->title);
+            $model->slug = Inflector::slug($model->title);
+
+            if ($model->save()) {
+                $model->uploadItemImage();
+                Tag::saveTags($model->tags, $model->id);
+                Category::saveCategory($model->categories, $model->id);
+                return $this->redirect(['view', 'id' => $model->id]);
+            } else {
+                return $this->redirect(['create']);
+            }
+
+
+            //$model->save();
+            //return $this->redirect(['view', 'id' => $model->id]);
         }
+
+        $categories = ArrayHelper::map(Category::find()->select(['id', 'name'])->orderBy(['name' => SORT_ASC])->all(), 'id', 'name');
 
         return $this->render('create', [
             'model' => $model,
+            'categories' => $categories,
         ]);
     }
 

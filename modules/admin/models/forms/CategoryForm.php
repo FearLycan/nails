@@ -14,6 +14,7 @@ class CategoryForm extends Category
     {
         return [
             [['name', 'status'], 'required'],
+            [['status'], 'in', 'range' => array_keys(static::getStatuses())],
             [['name', 'description'], 'string'],
         ];
     }

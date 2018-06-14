@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use app\components\Inflector;
+use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 
@@ -144,5 +146,29 @@ class Tag extends ActiveRecord
         }
 
         return false;
+    }
+
+    public static function saveTags($array, $itemID)
+    {
+        $array = array_unique($array);
+
+        foreach ($array as $item) {
+            $item =  Inflector::slug($item);
+            /* @var $tag Tag */
+            $tag = Tag::find()->where(['name' => $item])->one();
+
+            if (empty($tag)) {
+                $tag = new Tag();
+                $tag->name = $item;
+                $tag->frequency = 1;
+                $tag->status = self::STATUS_ACTIVE;
+                $tag->author_id = Yii::$app->user->identity->id;
+                $tag->save();
+            }else{
+                $tag->frequencyIncrement();
+            }
+
+            ItemTag::connect($itemID, $tag->id);
+        }
     }
 }

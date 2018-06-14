@@ -10,6 +10,7 @@ use app\modules\admin\models\searches\TagSearch;
 use app\modules\admin\components\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\Response;
 
 /**
  * TagController implements the CRUD actions for Tag model.
@@ -133,5 +134,42 @@ class TagController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    /**
+     * Get options for Select2 widget in offer form.
+     *
+     * @param string $phrase
+     * @param int $page
+     * @return array
+     */
+    public function actionList($phrase, $page = 1)
+    {
+        $limit = 20;
+
+        $tags = Tag::find()->select(['id', 'name'])
+            ->where(['status' => Tag::STATUS_ACTIVE])
+            ->andWhere(['like', 'name', $phrase])
+            ->limit($limit)
+            ->offset(($page - 1) * $limit)
+            ->all();
+
+        $results = [];
+        /* @var $tag Tag */
+        foreach ($tags as $tag) {
+            $results[] = [
+                'id' => $tag->name,
+                'name' => $tag->name,
+            ];
+        }
+
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        return [
+            'results' => $results,
+            'pagination' => [
+                'page' => $page,
+                'more' => count($results) === $limit,
+            ],
+        ];
     }
 }

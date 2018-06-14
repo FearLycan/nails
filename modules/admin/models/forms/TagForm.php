@@ -13,6 +13,7 @@ class TagForm extends Tag
     {
         return [
             [['name', 'status'], 'required'],
+            [['status'], 'in', 'range' => array_keys(static::getStatuses())],
             [['name'], 'string'],
 
         ];

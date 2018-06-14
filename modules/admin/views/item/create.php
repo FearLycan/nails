@@ -12,10 +12,20 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="item-create">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-list" aria-hidden="true"></i> Przedmiot</h3>
+                </div>
+                <div class="panel-body">
+                    <?= $this->render('_form', [
+                        'model' => $model,
+                        'categories' => $categories,
+                    ]) ?>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>

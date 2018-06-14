@@ -39,10 +39,6 @@ class Item extends ActiveRecord
                 ],
                 'value' => date("Y-m-d H:i:s"),
             ],
-            'slug' => [
-                'class' => SluggableBehavior::className(),
-                'attribute' => 'title',
-            ],
         ];
     }
 
@@ -104,7 +100,6 @@ class Item extends ActiveRecord
             static::STATUS_ACTIVE => 'Aktywny',
             static::STATUS_PENDING => 'Oczekujący',
             static::STATUS_INACTIVE => 'Nieaktywny',
-            static::STATUS_ARCHIVES => 'Archiwum',
         ];
     }
 

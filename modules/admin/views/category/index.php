@@ -41,6 +41,17 @@ $this->params['breadcrumbs'][] = $this->title;
                                 //'slug',
                                 //'description:ntext',
                                 [
+                                    'label' => 'Status',
+                                    'attribute' => 'status',
+                                    'contentOptions' => ['style' => 'width: 150px'],
+                                    'format' => 'raw',
+                                    //'filter' => Item::getStatusNames(),
+                                    'value' => function ($data) {
+                                        /* @var $data \app\modules\admin\models\Category */
+                                        return $data->getStatusName();
+                                    },
+                                ],
+                                [
                                     'attribute' => 'author',
                                     'format' => 'raw',
                                     'value' => function ($data) {
@@ -58,14 +69,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
                                 [
                                     'class' => 'yii\grid\ActionColumn',
-                                    'contentOptions' => ['style' => 'width: 130px'],
+                                    'contentOptions' => ['style' => 'width: 110px'],
                                     'template' => '{new_action1} {new_action2}',
                                     'buttons' => [
                                         'new_action1' => function ($url, $model, $key) {
                                             return Html::a(
                                                 'Edytuj',
                                                 ['category/update', 'id' => $model->id],
-                                                ['title' => 'Edytuj', 'class' => 'btn btn-primary btn-sm']
+                                                ['title' => 'Edytuj', 'class' => 'btn btn-primary btn-xs']
                                             );
                                         },
                                         'new_action2' => function ($url, $model, $key) {
@@ -73,7 +84,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                                 'Usuń',
                                                 ['category/delete', 'id' => $model->id],
                                                 [
-                                                    'title' => 'Usuń', 'class' => 'btn btn-danger btn-sm',
+                                                    'title' => 'Usuń', 'class' => 'btn btn-danger btn-xs',
                                                     'data-confirm' => 'Are you sure to delete this item?',
                                                     'data-method' => 'post'
                                                 ]

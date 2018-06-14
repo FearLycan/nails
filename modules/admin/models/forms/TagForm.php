@@ -2,10 +2,9 @@
 
 namespace app\modules\admin\models\forms;
 
-use app\modules\admin\models\Category;
+use app\modules\admin\models\Tag;
 
-
-class CategoryForm extends Category
+class TagForm extends Tag
 {
     /**
      * @inheritdoc
@@ -14,7 +13,8 @@ class CategoryForm extends Category
     {
         return [
             [['name', 'status'], 'required'],
-            [['name', 'description'], 'string'],
+            [['name'], 'string'],
+
         ];
     }
 

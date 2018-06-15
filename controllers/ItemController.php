@@ -29,10 +29,11 @@ class ItemController extends Controller
             $this->notFound();
         }
 
-        //die(var_dump($model->getMoreFromCategory()));
+        $items = $model->getMoreFromCategory(8);
 
         return $this->render('view', [
             'model' => $model,
+            'items' => $items
         ]);
     }
 

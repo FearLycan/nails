@@ -278,3 +278,9 @@ $this->title = 'Dashboard'
         </div>
     </div>
 </div>
+
+<?= $this->registerCssFile(Yii::getAlias('@web') . '/administrator/css/plugins/morris.css'); ?>
+
+<?= $this->registerJsFile(Yii::getAlias('@web') . '/administrator/js/plugins/morris/raphael.min.js',  ['depends' => [\yii\web\JqueryAsset::className()]]); ?>
+<?= $this->registerJsFile(Yii::getAlias('@web') . '/administrator/js/plugins/morris/morris.min.js',  ['depends' => [\yii\web\JqueryAsset::className()]]); ?>
+<?= $this->registerJsFile(Yii::getAlias('@web') . '/administrator/js/plugins/morris/morris-data.js',  ['depends' => [\yii\web\JqueryAsset::className()]]); ?>

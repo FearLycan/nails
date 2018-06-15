@@ -59,3 +59,8 @@ a.desc:after {
 .sort-ordinal a.desc:after {
     content: "\e156";
 }
+
+.side-nav > li > ul > li.active > a {
+    color: #fff;
+    background-color: #080808;
+}

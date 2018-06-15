@@ -9,6 +9,10 @@ use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
 use app\assets\AdminAsset;
 
+$nails = [
+    'category', 'tag', 'item'
+];
+
 AdminAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -155,21 +159,31 @@ AdminAsset::register($this);
         <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav">
-                <li class="active">
+                <li>
+                    <a href="<?= Url::to(['/']) ?>" target="_blank"><i class="fa fa-home"></i> Strona główna</a>
+                </li>
+                <li class="<?= Yii::$app->controller->id == 'default' ? 'active' : 'no' ?>">
                     <a href="<?= Url::to(['/admin']) ?>"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                 </li>
                 <li>
                     <a href="javascript:;" data-toggle="collapse" data-target="#nails">
-                        <i class="fa fa-hand-paper-o" aria-hidden="true"></i> Paznokcie <i class="fa fa-fw fa-caret-down"></i></a>
-                    <ul id="nails" class="collapse">
-                        <li>
-                            <a href="<?= Url::to(['/admin/category']) ?>"><i class="fa fa-folder" aria-hidden="true"></i> Kategorie</a>
+                        <i class="fa fa-hand-paper-o" aria-hidden="true"></i> Paznokcie <i
+                                class="fa fa-fw fa-caret-down"></i></a>
+                    <ul id="nails" class="<?= in_array(Yii::$app->controller->id, $nails) ? 'collapse in' : 'collapse' ?>">
+                        <li class="<?= Yii::$app->controller->id == 'category' ? 'active' : 'no' ?>">
+                            <a href="<?= Url::to(['/admin/category']) ?>">
+                                <i class="fa fa-folder" aria-hidden="true"></i> Kategorie
+                            </a>
                         </li>
-                        <li>
-                            <a href="<?= Url::to(['/admin/item']) ?>"><i class="fa fa-list" aria-hidden="true"></i> Lista</a>
+                        <li class="<?= Yii::$app->controller->id == 'item' ? 'active' : 'no' ?>">
+                            <a href="<?= Url::to(['/admin/item']) ?>">
+                                <i class="fa fa-list" aria-hidden="true"></i> Lista
+                            </a>
                         </li>
-                        <li>
-                            <a href="<?= Url::to(['/admin/tag']) ?>"><i class="fa fa-tags" aria-hidden="true"></i> Tagi</a>
+                        <li class="<?= Yii::$app->controller->id == 'tag' ? 'active' : 'no' ?>">
+                            <a href="<?= Url::to(['/admin/tag']) ?>">
+                                <i class="fa fa-tags" aria-hidden="true"></i> Tagi
+                            </a>
                         </li>
                     </ul>
                 </li>

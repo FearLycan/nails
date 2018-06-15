@@ -1,13 +1,13 @@
 <?php
 
-namespace app\modules\admin\models\searches;
+namespace app\models\searches;
 
-use app\modules\admin\models\Item;
+use app\models\Item;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
 /**
- * ItemSearch represents the model behind the search form of `app\modules\admin\models\Item`.
+ * ItemSearch represents the model behind the search form of `app\models\Item`.
  */
 class ItemSearch extends Item
 {
@@ -17,8 +17,8 @@ class ItemSearch extends Item
     public function rules()
     {
         return [
-            [['id', 'status', 'author_id'], 'integer'],
-            [['title', 'created_at', 'updated_at'], 'safe'],
+            //    [['id', 'status', 'author_id'], 'integer'],
+            //    [['title', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -38,14 +38,20 @@ class ItemSearch extends Item
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($params, $query = null)
     {
-        $query = Item::find();
+        if($query == null){
+            $query = Item::find();
+        }
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => ['defaultOrder' => ['created_at' => SORT_DESC]],
+            'pagination' => [
+                'pageSize' => 10,
+            ],
         ]);
 
         $this->load($params);
@@ -58,14 +64,14 @@ class ItemSearch extends Item
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
-            'status' => $this->status,
-            'author_id' => $this->author_id,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            //   'id' => $this->id,
+            //   'status' => $this->status,
+            //   'author_id' => $this->author_id,
+            //   'created_at' => $this->created_at,
+            //   'updated_at' => $this->updated_at,
         ]);
 
-        $query->andFilterWhere(['like', 'title', $this->title]);
+        // $query->andFilterWhere(['like', 'title', $this->title]);
 
         return $dataProvider;
     }

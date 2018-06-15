@@ -6,6 +6,8 @@ use app\components\SluggableBehavior;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
+use yii\db\Expression;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "{{%item}}".
@@ -139,5 +141,39 @@ class Item extends ActiveRecord
     public function isActive()
     {
         return in_array($this->status, self::getActiveStatuses());
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTags()
+    {
+        return $this->hasMany(Tag::className(), ['id' => 'tag_id'])->viaTable('{{%item_tag}}', ['item_id' => 'id']);
+    }
+
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCategories()
+    {
+        return $this->hasMany(Category::className(), ['id' => 'category_id'])->viaTable('{{%item_category}}', ['item_id' => 'id']);
+    }
+
+    public function getMoreFromCategory($n)
+    {
+        $categories = $this->categories;
+
+        $ids = ArrayHelper::getColumn($categories, 'id');
+
+        $items = self::find()
+            ->joinWith('categories')
+            ->where(['category.id' => $ids])
+            ->andWhere(['!=', 'item.id', $this->id])
+            ->orderBy(new Expression('rand()'))
+            ->limit($n)
+            ->all();
+
+        return $items;
     }
 }

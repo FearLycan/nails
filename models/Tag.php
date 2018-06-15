@@ -153,7 +153,7 @@ class Tag extends ActiveRecord
         $array = array_unique($array);
 
         foreach ($array as $item) {
-            $item =  Inflector::slug($item);
+            $item = Inflector::slug($item);
             /* @var $tag Tag */
             $tag = Tag::find()->where(['name' => $item])->one();
 
@@ -164,11 +164,20 @@ class Tag extends ActiveRecord
                 $tag->status = self::STATUS_ACTIVE;
                 $tag->author_id = Yii::$app->user->identity->id;
                 $tag->save();
-            }else{
+            } else {
                 $tag->frequencyIncrement();
             }
 
             ItemTag::connect($itemID, $tag->id);
         }
+    }
+
+    public static function popular()
+    {
+        return Tag::find()
+            ->where(['status' => Tag::STATUS_ACTIVE])
+            ->orderBy(['frequency' => SORT_DESC])
+            ->limit(15)
+            ->all();
     }
 }

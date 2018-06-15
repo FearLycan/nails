@@ -20,7 +20,7 @@ AppAsset::register($this);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php $this->registerCsrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
+    <title><?= Html::encode(Yii::$app->params['name']) ?></title>
     <?php $this->head() ?>
 </head>
 <body>
@@ -35,11 +35,18 @@ AppAsset::register($this);
             'class' => 'navbar navbar-default navbar-fixed-top',
         ],
     ]);
+
+    $items[] = ['label' => 'Home', 'url' => ['/']];
+    $items[] = ['label' => 'Popularne', 'url' => ['/popular']];
+
+    if (!Yii::$app->user->isGuest && Yii::$app->user->identity->isAdministrator()) {
+        $items[] = ['label' => 'Admin', 'url' => ['/admin']];
+    }
+
+
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-        ],
+        'items' => $items,
     ]);
     NavBar::end();
     ?>

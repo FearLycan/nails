@@ -8,33 +8,37 @@ use Imagine\Image\Box;
 class Image
 {
 
-    const THUMBNAIL_MAX_WIDTH = 250;
-    const THUMBNAIL_MAX_HEIGHT = 250;
+    const THUMBNAIL_MAX_WIDTH = 270;
+    const THUMBNAIL_MAX_HEIGHT = 270;
 
-    const IMAGE_MAX_WIDTH = 700;
-    const IMAGE_MAX_HEIGHT = 700;
+    const SMALL_MAX_WIDTH = 70;
+    const SMALL_MAX_HEIGHT = 70;
 
-    const IMAGE_REVIEW_MAX_WIDTH = 1400;
-    const IMAGE_REVIEW_MAX_HEIGHT = 1400;
-
-    const IMAGE_AVATAR_MAX_WIDTH = 150;
-    const IMAGE_AVATAR_MAX_HEIGHT = 150;
+    const IMAGE_MAX_WIDTH = 610;
+    const IMAGE_MAX_HEIGHT = 610;
 
     const URL = 'images/item/';
     const URL_THUMBNAIL = 'images/item/thumbnail/';
+    const URL_SMALL = 'images/item/70x70/';
 
     const URL_AVATAR = 'images/avatar/';
 
 
-    public static function createThumbnail($url, $urlSave ,$width, $height)
+    public static function createThumbnail($url, $urlSave, $width, $height)
     {
         Img::getImagine()->open($url)->thumbnail(new Box($width, $height))
-            ->save($urlSave, ['quality' => 90]);
+            ->save($urlSave, ['quality' => 99]);
     }
 
     public static function changeSize($url, $width, $height)
     {
         Img::getImagine()->open($url)->thumbnail(new Box($width, $height))
             ->save($url, ['quality' => 99]);
+    }
+
+    public static function createSmall($url, $urlSave, $width = self::SMALL_MAX_WIDTH, $height = self::SMALL_MAX_HEIGHT)
+    {
+        Img::getImagine()->open($url)->thumbnail(new Box($width, $height))
+            ->save($urlSave, ['quality' => 99]);
     }
 }

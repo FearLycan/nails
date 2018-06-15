@@ -4,8 +4,68 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a2059a35c88841e8655b78a9f49efbef",
+    "content-hash": "c27b6881b8eddcd6588bf7cde785774c",
     "packages": [
+        {
+            "name": "2amigos/yii2-tinymce-widget",
+            "version": "1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/2amigos/yii2-tinymce-widget.git",
+                "reference": "4f519e37774ef231e4b4d6046854d5638548c8e0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/2amigos/yii2-tinymce-widget/zipball/4f519e37774ef231e4b4d6046854d5638548c8e0",
+                "reference": "4f519e37774ef231e4b4d6046854d5638548c8e0",
+                "shasum": ""
+            },
+            "require": {
+                "tinymce/tinymce": ">=4",
+                "yiisoft/yii2": "~2.0.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.*"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                },
+                "asset-installer-paths": {
+                    "bower-asset-library": "vendor/bower"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "dosamigos\\tinymce\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "2amigOS! Consulting Group",
+                    "email": "hola@2amigos.us",
+                    "homepage": "http://2amigos.us",
+                    "role": "Developer"
+                }
+            ],
+            "description": "TinyMCE widget for Yii2.",
+            "homepage": "http://yiiwheels.com/extension/tinymce-widget",
+            "keywords": [
+                "2amigos",
+                "extension",
+                "tinymce",
+                "widget",
+                "yii",
+                "yii 2",
+                "yii2"
+            ],
+            "time": "2017-06-09T14:12:14+00:00"
+        },
         {
             "name": "bower-asset/bootstrap",
             "version": "v3.3.7",
@@ -113,12 +173,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cebe/markdown.git",
-                "reference": "7b158880b9c128de39d1102dc26e68082d1c4aa9"
+                "reference": "530bc7dcbdfea5ad2da030110ee3ac07cc797f90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cebe/markdown/zipball/7b158880b9c128de39d1102dc26e68082d1c4aa9",
-                "reference": "7b158880b9c128de39d1102dc26e68082d1c4aa9",
+                "url": "https://api.github.com/repos/cebe/markdown/zipball/530bc7dcbdfea5ad2da030110ee3ac07cc797f90",
+                "reference": "530bc7dcbdfea5ad2da030110ee3ac07cc797f90",
                 "shasum": ""
             },
             "require": {
@@ -165,7 +225,7 @@
                 "markdown",
                 "markdown-extra"
             ],
-            "time": "2018-03-26T11:25:22+00:00"
+            "time": "2018-06-13T20:42:05+00:00"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -591,17 +651,63 @@
             "time": "2018-01-23T07:37:21+00:00"
         },
         {
+            "name": "tinymce/tinymce",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tinymce/tinymce-dist.git",
+                "reference": "2d2cd37932279723b4a5e4d259bc94123acbe666"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tinymce/tinymce-dist/zipball/2d2cd37932279723b4a5e4d259bc94123acbe666",
+                "reference": "2d2cd37932279723b4a5e4d259bc94123acbe666",
+                "shasum": ""
+            },
+            "type": "component",
+            "extra": {
+                "component": {
+                    "scripts": [
+                        "tinymce.js",
+                        "plugins/*/plugin.js",
+                        "themes/*/theme.js"
+                    ],
+                    "files": [
+                        "tinymce.min.js",
+                        "plugins/*/plugin.min.js",
+                        "themes/*/theme.min.js",
+                        "skins/**"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1-only"
+            ],
+            "description": "Web based JavaScript HTML WYSIWYG editor control.",
+            "homepage": "http://www.tinymce.com",
+            "keywords": [
+                "editor",
+                "html",
+                "javascript",
+                "richtext",
+                "tinymce",
+                "wysiwyg"
+            ],
+            "time": "2018-05-16T04:27:27+00:00"
+        },
+        {
             "name": "yiisoft/yii2",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "2d7baecc125c91a7bdb12f5a604bde8aa11adea5"
+                "reference": "a741165ee91603518286fc28d4ee273ae3a0ef60"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/2d7baecc125c91a7bdb12f5a604bde8aa11adea5",
-                "reference": "2d7baecc125c91a7bdb12f5a604bde8aa11adea5",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/a741165ee91603518286fc28d4ee273ae3a0ef60",
+                "reference": "a741165ee91603518286fc28d4ee273ae3a0ef60",
                 "shasum": ""
             },
             "require": {
@@ -688,7 +794,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2018-06-12T06:50:43+00:00"
+            "time": "2018-06-14T17:23:10+00:00"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
@@ -962,6 +1068,28 @@
                 "parser"
             ],
             "time": "2017-08-30T11:04:43+00:00"
+        },
+        {
+            "name": "bower-asset/jquery-timeago",
+            "version": "v1.6.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rmm5t/jquery-timeago.git",
+                "reference": "36d331096b66f22ec5eaea776584a853b49b81bf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rmm5t/jquery-timeago/zipball/36d331096b66f22ec5eaea776584a853b49b81bf",
+                "reference": "36d331096b66f22ec5eaea776584a853b49b81bf",
+                "shasum": null
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.4"
+            },
+            "type": "bower-asset",
+            "license": [
+                "MIT"
+            ]
         },
         {
             "name": "bower-asset/typeahead.js",
@@ -1284,12 +1412,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "65fbcca41437baff58a5c0e8f08fae617531dd0d"
+                "reference": "28e848bc077a202c6a17ecc8e8f299d629c188f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/65fbcca41437baff58a5c0e8f08fae617531dd0d",
-                "reference": "65fbcca41437baff58a5c0e8f08fae617531dd0d",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/28e848bc077a202c6a17ecc8e8f299d629c188f7",
+                "reference": "28e848bc077a202c6a17ecc8e8f299d629c188f7",
                 "shasum": ""
             },
             "require": {
@@ -1326,7 +1454,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2018-03-15T16:58:08+00:00"
+            "time": "2018-06-15T07:14:11+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -2323,12 +2451,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/comparator.git",
-                "reference": "71d4a9394b5a0d4e98a35493c81dbd2cba657a7b"
+                "reference": "c9eb293d22c2f16b1304281538b7408210a41585"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/71d4a9394b5a0d4e98a35493c81dbd2cba657a7b",
-                "reference": "71d4a9394b5a0d4e98a35493c81dbd2cba657a7b",
+                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/c9eb293d22c2f16b1304281538b7408210a41585",
+                "reference": "c9eb293d22c2f16b1304281538b7408210a41585",
                 "shasum": ""
             },
             "require": {
@@ -2379,7 +2507,7 @@
                 "compare",
                 "equality"
             ],
-            "time": "2018-05-23T07:33:54+00:00"
+            "time": "2018-06-14T16:44:28+00:00"
         },
         {
             "name": "sebastian/diff",
@@ -3449,6 +3577,48 @@
             "time": "2018-05-29T14:25:02+00:00"
         },
         {
+            "name": "yiidoc/yii2-timeago",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yiidoc/yii2-timeago.git",
+                "reference": "b91f696ee7add04026f9eca231fa5255cdfec781"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yiidoc/yii2-timeago/zipball/b91f696ee7add04026f9eca231fa5255cdfec781",
+                "reference": "b91f696ee7add04026f9eca231fa5255cdfec781",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jquery-timeago": "1.*",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "yii\\timeago\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Nghia Nguyen",
+                    "email": "yiidevelop@gmail.com"
+                }
+            ],
+            "description": "Timeago is a jQuery plugin that makes it easy to support automatically updating fuzzy timestamps. Forked from @rmm5t for Yii2 framework.",
+            "keywords": [
+                "jquery",
+                "timeago",
+                "yii"
+            ],
+            "time": "2015-01-31T12:54:19+00:00"
+        },
+        {
             "name": "yiisoft/yii2-debug",
             "version": "dev-master",
             "source": {
@@ -3548,12 +3718,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-gii.git",
-                "reference": "ab8ba3b32767e929541e092007205972ebc677eb"
+                "reference": "ee4d072af2788208edaed2b24b5acbc34b8631a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-gii/zipball/ab8ba3b32767e929541e092007205972ebc677eb",
-                "reference": "ab8ba3b32767e929541e092007205972ebc677eb",
+                "url": "https://api.github.com/repos/yiisoft/yii2-gii/zipball/ee4d072af2788208edaed2b24b5acbc34b8631a1",
+                "reference": "ee4d072af2788208edaed2b24b5acbc34b8631a1",
                 "shasum": ""
             },
             "require": {
@@ -3589,7 +3759,7 @@
                 "gii",
                 "yii2"
             ],
-            "time": "2018-06-01T17:00:18+00:00"
+            "time": "2018-06-12T19:29:12+00:00"
         }
     ],
     "aliases": [],

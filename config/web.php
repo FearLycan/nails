@@ -5,8 +5,11 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
+    'timeZone' => 'Europe/Warsaw',
+    'language' => 'pl',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'defaultRoute' => 'item/index',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
@@ -50,6 +53,7 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 '<alias:admin>' => 'admin/default/index',
+                'item/<slug>' => 'item/view',
             ],
         ],
     ],

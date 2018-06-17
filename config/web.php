@@ -53,7 +53,10 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 '<alias:admin>' => 'admin/default/index',
-                'item/<slug>' => 'item/view',
+                '<alias:popularne>' => 'item/popular',
+                'paznokcie/<slug>' => 'item/view',
+                'tag/<slug>' => 'tag/view',
+                'kategoria/<slug>' => 'category/view',
             ],
         ],
     ],

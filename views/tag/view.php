@@ -5,11 +5,19 @@ use yii\widgets\ListView;
 
 ?>
 
+<div id="blue">
+    <div class="container">
+        <div class="row">
+            <h3>#<?= $tag ?></h3>
+        </div><!-- /row -->
+    </div> <!-- /container -->
+</div>
+
 <div class="col-lg-8 col-xs-12">
     <?= ListView::widget([
         'dataProvider' => $dataProvider,
         'summary' => false,
-        'itemView' => '_item',
+        'itemView' => '../item/_item',
     ]); ?>
 </div>
 

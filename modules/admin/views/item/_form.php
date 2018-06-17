@@ -1,5 +1,6 @@
 <?php
 
+use dosamigos\tinymce\TinyMce;
 use kartik\file\FileInput;
 use kartik\select2\Select2;
 use yii\helpers\Html;
@@ -33,7 +34,14 @@ use yii\web\View;
         </div>
     </div>
 
-    <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'description')->widget(TinyMce::className(), [
+        'options' => ['rows' => 6],
+        'language' => 'pl',
+        'clientOptions' => [
+            'branding' => false,
+            'menubar' => false,
+        ]
+    ]); ?>
 
     <div class="row" style="margin-bottom: 15px;">
         <div class="col-md-6">

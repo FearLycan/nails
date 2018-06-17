@@ -38,12 +38,14 @@ class ItemForm extends Item
     {
         $url = Image::URL . $this->image;
         $urlThumb = Image::URL_THUMBNAIL . $this->image;
+        $urlSmall = Image::URL_SMALL . $this->image;
         if (!$this->myFile->saveAs($url)) {
             $this->addError('myFile', 'Unable to save the uploaded file');
             return false;
         }
         $this->myFile = $url;
         Image::createThumbnail($url, $urlThumb, Image::THUMBNAIL_MAX_WIDTH, Image::THUMBNAIL_MAX_HEIGHT);
+        Image::createThumbnail($url, $urlSmall, Image::SMALL_MAX_WIDTH, Image::SMALL_MAX_HEIGHT);
         Image::changeSize($url, Image::IMAGE_MAX_WIDTH, Image::IMAGE_MAX_HEIGHT);
     }
 

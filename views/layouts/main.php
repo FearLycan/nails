@@ -24,6 +24,18 @@ AppAsset::register($this);
     <?php $this->head() ?>
 </head>
 <body>
+
+<div id="fb-root"></div>
+<script>(function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = 'https://connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v3.0&appId=1063640817146485&autoLogAppEvents=1';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+
 <?php $this->beginBody() ?>
 
 <div class="wrap">
@@ -37,7 +49,7 @@ AppAsset::register($this);
     ]);
 
     $items[] = ['label' => 'Home', 'url' => ['/']];
-    $items[] = ['label' => 'Popularne', 'url' => ['/popular']];
+    $items[] = ['label' => 'Popularne', 'url' => ['/popularne']];
 
     if (!Yii::$app->user->isGuest && Yii::$app->user->identity->isAdministrator()) {
         $items[] = ['label' => 'Admin', 'url' => ['/admin']];
@@ -82,14 +94,12 @@ AppAsset::register($this);
                     industry's standard dummy text ever since the 1500s.</p>
             </div>
             <div class="col-lg-4 col-lg-offset-4">
-                <h4>Social Links</h4>
+                <h4>Dołącz do Nas</h4>
                 <div class="hline-w"></div>
                 <p>
-                    <a href="#"><i class="fa fa-dribbble"></i></a>
-                    <a href="#"><i class="fa fa-facebook"></i></a>
-                    <a href="#"><i class="fa fa-twitter"></i></a>
-                    <a href="#"><i class="fa fa-instagram"></i></a>
-                    <a href="#"><i class="fa fa-tumblr"></i></a>
+                    <a href="https://www.facebook.com/nailsbyMartha00/" target="_blank">
+                        <i class="fa fa-facebook"></i>
+                    </a>
                 </p>
             </div>
             <div class="col-lg-4">

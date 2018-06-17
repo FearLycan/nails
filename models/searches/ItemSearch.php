@@ -11,15 +11,21 @@ use yii\data\ActiveDataProvider;
  */
 class ItemSearch extends Item
 {
+    public $title;
+
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function rules()
     {
         return [
-            //    [['id', 'status', 'author_id'], 'integer'],
-            //    [['title', 'created_at', 'updated_at'], 'safe'],
+            [['title'], 'string'],
         ];
+    }
+
+    public function formName()
+    {
+        return '';
     }
 
     /**
@@ -40,8 +46,8 @@ class ItemSearch extends Item
      */
     public function search($params, $query = null)
     {
-        if($query == null){
-            $query = Item::find();
+        if ($query == null) {
+            $query = Item::find()->where(['status' => self::STATUS_ACTIVE]);
         }
 
         // add conditions that should always apply here
@@ -64,14 +70,14 @@ class ItemSearch extends Item
 
         // grid filtering conditions
         $query->andFilterWhere([
-            //   'id' => $this->id,
+          //  'title' => $this->title,
             //   'status' => $this->status,
             //   'author_id' => $this->author_id,
             //   'created_at' => $this->created_at,
             //   'updated_at' => $this->updated_at,
         ]);
 
-        // $query->andFilterWhere(['like', 'title', $this->title]);
+        $query->andFilterWhere(['like', 'item.title', $this->title]);
 
         return $dataProvider;
     }

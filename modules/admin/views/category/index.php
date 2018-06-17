@@ -38,6 +38,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
                                 //'id',
                                 'name',
+                                [
+                                    'attribute' => 'frequency',
+                                    'format' => 'raw',
+                                    'contentOptions' => ['style' => 'width: 50px;'],
+                                ],
                                 //'slug',
                                 //'description:ntext',
                                 [
@@ -57,7 +62,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     'value' => function ($data) {
                                         return Html::a($data->author->name, ['user/view', 'id' => $data->author_id]);
                                     },
-                                    'contentOptions' => ['style' => 'width: 250px;'],
+                                    'contentOptions' => ['style' => 'width: 180px;'],
                                 ],
                                 [
                                     'attribute' => 'created_at',

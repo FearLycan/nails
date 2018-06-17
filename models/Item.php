@@ -18,6 +18,7 @@ use yii\helpers\ArrayHelper;
  * @property string $image
  * @property string $description
  * @property int $status
+ * @property int $views
  * @property int $author_id
  * @property string $created_at
  * @property string $updated_at
@@ -41,6 +42,11 @@ class Item extends ActiveRecord
                 ],
                 'value' => date("Y-m-d H:i:s"),
             ],
+            'sluggable' => [
+                'class' => SluggableBehavior::className(),
+                'attribute' => 'title',
+                'slugAttribute' => 'slug',
+            ],
         ];
     }
 
@@ -59,7 +65,7 @@ class Item extends ActiveRecord
     {
         return [
             [['description'], 'string'],
-            [['status', 'author_id'], 'integer'],
+            [['status', 'author_id', 'views'], 'integer'],
             [['author_id'], 'required'],
             [['created_at', 'updated_at'], 'safe'],
             [['title', 'slug', 'image'], 'string', 'max' => 255],
@@ -79,6 +85,7 @@ class Item extends ActiveRecord
             'image' => 'Image',
             'description' => 'Description',
             'status' => 'Status',
+            'views' => 'Views',
             'author_id' => 'Author ID',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
@@ -175,5 +182,53 @@ class Item extends ActiveRecord
             ->all();
 
         return $items;
+    }
+
+    public static function getPopular()
+    {
+        $items = Item::find()
+            ->where(['status' => Item::STATUS_ACTIVE])
+            ->orderBy(['views' => SORT_DESC])
+            ->limit(5)
+            ->all();
+
+        return $items;
+    }
+
+    public function visit()
+    {
+        $IP = Yii::$app->getRequest()->getUserIP();
+        $time = date('Y-m-d H:i:s', strtotime('-5 minutes', strtotime(date('Y-m-d H:i:s'))));
+
+        $visitor = Visitor::find()
+            ->where(['IP' => $IP, 'item_id' => $this->id])
+            ->one();
+
+        if (empty($visitor)) {
+            $visitor = new Visitor();
+            $visitor->IP = $IP;
+            $visitor->item_id = $this->id;
+            $visitor->type = Visitor::TYPE_NORMAL;
+            $visitor->save();
+        } elseif ($visitor->type == Visitor::TYPE_NORMAL && $visitor->visit <= $time) {
+            //aktualizacja czasu i +1 do views
+            $visitor->visit = date('Y-m-d H:i:s');
+            $visitor->save();
+
+            $this->views++;
+            $this->save(false, ['views']);
+        } else {
+            $visitor->visit = date('Y-m-d H:i:s');
+            $visitor->save();
+        }
+    }
+
+    public function removeImageFile()
+    {
+        if (file_exists(Image::URL . $this->image && Image::URL_THUMBNAIL . $this->image)) {
+            unlink(Image::URL . $this->image);
+            unlink(Image::URL_THUMBNAIL . $this->image);
+            unlink(Image::URL_SMALL . $this->image);
+        }
     }
 }

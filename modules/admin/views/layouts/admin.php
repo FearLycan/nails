@@ -13,6 +13,10 @@ $nails = [
     'category', 'tag', 'item'
 ];
 
+$system = [
+    'visitor'
+];
+
 AdminAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -169,7 +173,8 @@ AdminAsset::register($this);
                     <a href="javascript:;" data-toggle="collapse" data-target="#nails">
                         <i class="fa fa-hand-paper-o" aria-hidden="true"></i> Paznokcie <i
                                 class="fa fa-fw fa-caret-down"></i></a>
-                    <ul id="nails" class="<?= in_array(Yii::$app->controller->id, $nails) ? 'collapse in' : 'collapse' ?>">
+                    <ul id="nails"
+                        class="<?= in_array(Yii::$app->controller->id, $nails) ? 'collapse in' : 'collapse' ?>">
                         <li class="<?= Yii::$app->controller->id == 'category' ? 'active' : 'no' ?>">
                             <a href="<?= Url::to(['/admin/category']) ?>">
                                 <i class="fa fa-folder" aria-hidden="true"></i> Kategorie
@@ -187,9 +192,19 @@ AdminAsset::register($this);
                         </li>
                     </ul>
                 </li>
-                <!--<li>
-                    <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
-                </li>-->
+                <li>
+                    <a href="javascript:;" data-toggle="collapse" data-target="#system">
+                        <i class="fa fa-cogs" aria-hidden="true"></i> System <i
+                                class="fa fa-fw fa-caret-down"></i></a>
+                    <ul id="system"
+                        class="<?= in_array(Yii::$app->controller->id, $system) ? 'collapse in' : 'collapse' ?>">
+                        <li class="<?= Yii::$app->controller->id == 'visitor' ? 'active' : 'no' ?>">
+                            <a href="<?= Url::to(['/admin/visitor']) ?>">
+                                <i class="fa fa-user-secret" aria-hidden="true"></i> Odwiedzający
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->

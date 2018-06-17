@@ -5,6 +5,14 @@ use yii\widgets\ListView;
 
 ?>
 
+<div id="blue">
+    <div class="container">
+        <div class="row">
+            <h3>Popularne wpisy</h3>
+        </div><!-- /row -->
+    </div> <!-- /container -->
+</div>
+
 <div class="col-lg-8 col-xs-12">
     <?= ListView::widget([
         'dataProvider' => $dataProvider,

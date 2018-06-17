@@ -39,12 +39,12 @@ $this->params['breadcrumbs'][] = $this->title;
                             [
                                 'attribute' => 'frequency',
                                 'format' => 'raw',
-                                'contentOptions' => ['style' => 'width: 50px;'],
+                                'contentOptions' => ['style' => 'width: 120px;'],
                             ],
                             [
                                 'label' => 'Status',
                                 'attribute' => 'status',
-                                'contentOptions' => ['style' => 'width: 150px'],
+                                'contentOptions' => ['style' => 'width: 120px'],
                                 'format' => 'raw',
                                 //'filter' => Item::getStatusNames(),
                                 'value' => function ($data) {
@@ -58,12 +58,12 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'value' => function ($data) {
                                     return Html::a($data->author->name, ['user/view', 'id' => $data->author_id]);
                                 },
-                                'contentOptions' => ['style' => 'width: 250px;'],
+                                'contentOptions' => ['style' => 'width: 200px;'],
                             ],
                             [
                                 'attribute' => 'created_at',
                                 'format' => 'raw',
-                                'contentOptions' => ['style' => 'width: 230px;'],
+                                'contentOptions' => ['style' => 'width: 200px;'],
                             ],
                             //'updated_at',
 

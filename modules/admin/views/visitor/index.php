@@ -2,16 +2,16 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use yii\helpers\Url;
 use yii\widgets\Pjax;
+
 /* @var $this yii\web\View */
-/* @var $searchModel app\modules\admin\models\searches\ItemSearch */
+/* @var $searchModel app\modules\admin\models\searches\VisitorSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Items';
+$this->title = 'Visitors';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="item-index">
+<div class="visitor-index">
 
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -21,49 +21,54 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="panel panel-default">
                 <div class="panel-heading clearfix">
                     <h3 class="panel-title pull-left">
-                        <i class="fa fa-list" aria-hidden="true"></i> Lista
+                        <i class="fa fa-user-secret" aria-hidden="true"></i> Lista IP
                     </h3>
-                    <div class="btn-group pull-right">
-                        <a href="<?= Url::to(['create']) ?>" class="btn btn-success btn-sm">Dodaj</a>
-                    </div>
                 </div>
                 <div class="panel-body">
                     <?= GridView::widget([
                         'dataProvider' => $dataProvider,
-                        //'filterModel' => $searchModel,
                         'layout' => "{items}\n{summary}\n{pager}",
+                        //'filterModel' => $searchModel,
                         'columns' => [
                             ['class' => 'yii\grid\SerialColumn', 'contentOptions' => ['style' => 'width: 60px;']],
-                            'title',
+
                             [
-                                'label' => 'Status',
-                                'attribute' => 'status',
-                                'contentOptions' => ['style' => 'width: 150px'],
+                                'label' => 'IP',
+                                'attribute' => 'IP',
+                                //'contentOptions' => ['style' => 'width: 50px'],
+                                'format' => 'raw',
+                                'value' => function ($data) {
+                                    /* @var $data \app\modules\admin\models\Visitor */
+                                    return Html::a($data->IP, ['visitor/view', 'id' => $data->id]);
+                                },
+                            ],
+                            [
+                                'label' => 'Typ',
+                                'attribute' => 'type',
+                                'contentOptions' => ['style' => 'width: 120px'],
                                 'format' => 'raw',
                                 //'filter' => Item::getStatusNames(),
                                 'value' => function ($data) {
-                                    /* @var $data \app\modules\admin\models\Item */
-                                    return $data->getStatusName();
+                                    /* @var $data \app\modules\admin\models\Visitor */
+                                    return $data->getTypesName();
                                 },
                             ],
                             [
-                                'attribute' => 'views',
-                                'format' => 'raw',
-                                'contentOptions' => ['style' => 'width: 80px;'],
-                            ],
-                            [
-                                'attribute' => 'author',
+                                'label' => 'Item',
+                                'attribute' => 'item_id',
+                                'contentOptions' => ['style' => 'width: 130px'],
                                 'format' => 'raw',
                                 'value' => function ($data) {
-                                    return Html::a($data->author->name, ['user/view', 'id' => $data->author_id]);
+                                    /* @var $data \app\modules\admin\models\Visitor */
+                                    return Html::a('Zobacz ID: ' . $data->item_id, ['item/view', 'id' => $data->item_id]);
                                 },
-                                'contentOptions' => ['style' => 'width: 200px;'],
                             ],
                             [
-                                'attribute' => 'created_at',
+                                'attribute' => 'visit',
                                 'format' => 'raw',
-                                'contentOptions' => ['style' => 'width: 200px;'],
+                                'contentOptions' => ['style' => 'width: 180px;'],
                             ],
+
                             [
                                 'class' => 'yii\grid\ActionColumn',
                                 'contentOptions' => ['style' => 'width: 110px'],
@@ -72,14 +77,14 @@ $this->params['breadcrumbs'][] = $this->title;
                                     'new_action1' => function ($url, $model, $key) {
                                         return Html::a(
                                             'Edytuj',
-                                            ['item/update', 'id' => $model->id],
+                                            ['visitor/update', 'id' => $model->id],
                                             ['title' => 'Edytuj', 'class' => 'btn btn-primary btn-xs']
                                         );
                                     },
                                     'new_action2' => function ($url, $model, $key) {
                                         return Html::a(
                                             'Usuń',
-                                            ['item/delete', 'id' => $model->id],
+                                            ['visitor/delete', 'id' => $model->id],
                                             [
                                                 'title' => 'Usuń', 'class' => 'btn btn-danger btn-xs',
                                                 'data-confirm' => 'Are you sure to delete this item?',

@@ -377,10 +377,10 @@ a:focus {
 
 #blue {
     background: #00b3fe;
-    margin-top: 60px;
-    margin-bottom: 60px;
-    padding-top: 25px;
-    padding-bottom: 25px;
+    margin-top: -50px;
+    margin-bottom: 30px;
+    padding-top: 0;
+    padding-bottom: 20px;
 }
 
 #blue h3 {
@@ -505,25 +505,23 @@ csmall2 {
 }
 
 .box {
-    background-color: #26292d;
+    /*background-color: #26292d;*/
+    /* background-color: #4F5C6C;*/
 }
 
 .box {
     max-width: 750px;
     /*background-color: #424242;*/
     width: 100%;
-    margin-bottom: 30px;
+    /*margin-bottom: 30px;*/
     clear: both;
-    padding-bottom: 10px;
-}
-
-.box .user-bar {
-    background: #000;
+    /* padding-bottom: 10px;*/
 }
 
 .box .user-bar {
     /*background-color: #212121;*/
-    background-color: #384452;
+    /*background-color: #384452;*/
+    /*background-color: #212D3C;*/
     /*padding: 10.5px 0;*/
     position: relative;
 }
@@ -540,15 +538,19 @@ csmall2 {
     overflow: hidden;
 }
 
-.box .content h2 {
-    font-size: 24px;
-    font-weight: 500;
+.box .content .h2-description {
+    /*font-size: 24px;
+    font-weight: 500;*/
     text-align: left;
-    color: #fff;
+    /*color: #fff;*/
+    font-size: 22px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    color: #384452;
 }
 
 .box .content h2 a {
-    color: #fff;
+    /*  color: #fff;*/
     text-decoration: none;
 }
 
@@ -579,7 +581,7 @@ csmall2 {
 }
 
 .box .content .toolbar .tag-list a:hover {
-    color: #ffffff;
+    color: #000;
 }
 
 .box .content .toolbar {
@@ -606,11 +608,15 @@ csmall2 {
 }
 
 .box .user-bar .user .name {
-    font-size: 22px;
-    font-weight: 500;
-    color: #fff;
+    font-size: 26px;
+    /* font-weight: 500;
+     color: #fff;*/
     line-height: 35px;
     margin-right: 11px;
+
+    color: #00b3fe;
+    font-weight: 700;
+    margin-bottom: 15px;
 }
 
 .box .content {
@@ -621,11 +627,11 @@ csmall2 {
 }
 
 .box .content h1, .box .content h2 {
-    margin: 21px 0 14px;
+    margin: 0 0 -5px 0;
     font-size: 24px;
     font-weight: 500;
     text-align: left;
-    color: #fff;
+    /* color: #fff;*/
     float: left;
     max-width: calc(100% - 50px);
 }
@@ -649,8 +655,18 @@ csmall2 {
 
 .content .description {
     margin: 10px auto 20px auto;
-    color: #ffffff;
-    float: left;
+    padding: 0;
+    margin-bottom: 12px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 25px;
+    color: #384452;
+}
+
+.see-more{
+    margin-top: 0;
+    margin-bottom: 20px;
 }
 
 .img-more {

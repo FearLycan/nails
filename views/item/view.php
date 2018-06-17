@@ -46,21 +46,82 @@ use yii\helpers\Url;
                         </a>
                     </figure>
 
-                    <?php if (!empty($model->description)): ?>
-                        <div class="content">
-                            <h2>Opis</h2>
-                            <div class="description">
-                                <?= Html::encode($model->description) ?>
-                            </div>
-                        </div>
-                    <?php endif; ?>
-
                 </div>
             </div>
         </div>
     </div>
 
+<?php if (!empty($model->description)): ?>
+
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1">
+            <div class="content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="h2-description">Dodatkowy opis</h2>
+                    </div>
+                </div>
+                <div class="description">
+                    <?= $model->description ?>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<?php endif; ?>
+
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1">
+            <div class="content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h6>SHARE:</h6>
+                        <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Udostępnij</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <hr>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator"
+                 data-width="100%" data-numposts="10"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <hr>
+        </div>
+    </div>
+
 <?php if (!empty($items)): ?>
+    <div class="row">
+        <div class="col-lg-12">
+            <h3 class="h2-description see-more">Zobacz więcej z:
+
+                <?php foreach ($model->categories as $key => $category): ?>
+
+                    <?php if (count($model->categories) - 1 > $key): ?>
+                        <?= Html::a($category->name, ['category/view', 'slug' => $category->slug]) ?>,
+                    <?php else: ?>
+                        <?= Html::a($category->name, ['category/view', 'slug' => $category->slug]) ?>.
+                    <?php endif; ?>
+
+                <?php endforeach; ?>
+
+            </h3>
+        </div>
+    </div>
+
+
     <div class="row">
         <?php foreach ($items as $item): ?>
             <div class="col-lg-3">

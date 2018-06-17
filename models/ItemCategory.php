@@ -60,8 +60,24 @@ class ItemCategory extends \yii\db\ActiveRecord
         $connects = self::find()->where(['item_id' => $itemID])->all();
 
         foreach ($connects as $connect) {
-            //$connect->tag->frequencyDecrement();
+            $connect->category->frequencyDecrement();
             $connect->delete();
         }
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getItem()
+    {
+        return $this->hasOne(Item::className(), ['id' => 'item_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCategory()
+    {
+        return $this->hasOne(Category::className(), ['id' => 'category_id']);
     }
 }

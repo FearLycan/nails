@@ -18,8 +18,8 @@ class m180614_203606_create_item_category_table extends Migration
         ]);
 
         $this->addPrimaryKey('{{%item_category_pk}}', '{{%item_category}}', ['item_id', 'category_id']);
-        $this->addForeignKey('{{%item_id_fk}}', '{{%item_category}}', 'item_id', '{{%item}}', 'id', 'CASCADE', 'CASCADE');
-        $this->addForeignKey('{{%category_id_fk}}', '{{%item_category}}', 'tag_id', '{{%category}}', 'id', 'CASCADE', 'CASCADE');
+        $this->addForeignKey('{{%item_category_item_id_fk}}', '{{%item_category}}', 'item_id', '{{%item}}', 'id', 'CASCADE', 'CASCADE');
+        $this->addForeignKey('{{%item_category_category_id_fk}}', '{{%item_category}}', 'category_id', '{{%category}}', 'id', 'CASCADE', 'CASCADE');
     }
 
     /**
@@ -27,8 +27,8 @@ class m180614_203606_create_item_category_table extends Migration
      */
     public function safeDown()
     {
-        $this->dropForeignKey('{{%item_id_fk}}', '{{%game_genre}}');
-        $this->dropForeignKey('{{%category_id_fk}}', '{{%game_genre}}');
+        $this->dropForeignKey('{{%item_category_item_id_fk}}', '{{%item_category}}');
+        $this->dropForeignKey('{{%item_category_category_id_fk}}', '{{%item_category}}');
         $this->dropTable('{{%item_category}}');
     }
 }

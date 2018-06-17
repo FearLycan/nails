@@ -1,34 +1,32 @@
 <h4>Search</h4>
 <div class="hline"></div>
 <p>
-    <br/>
-    <input type="text" class="form-control" placeholder="Search something">
+    <form action="<?= yii\helpers\Url::home() ?>" method="get">
+        <input type="text" class="form-control" name="title" placeholder="Search something">
+    </form>
 </p>
 
 <div class="spacing"></div>
 
-<h4>Recent Posts</h4>
+<h4>Najczęściej oglądane</h4>
 <div class="hline"></div>
 <ul class="popular-posts">
-    <li>
-        <a href="#"><img src="http://via.placeholder.com/140x140" alt="Popular Post"></a>
-        <p><a href="#">Lorem ipsum dolor sit amet consectetur adipiscing elit</a></p>
-        <em>Posted on 02/21/14</em>
-    </li>
-    <li>
-        <a href="#"><img src="http://via.placeholder.com/70x70" alt="Popular Post"></a>
-        <p><a href="#">Lorem ipsum dolor sit amet consectetur adipiscing elit</a></p>
-        <em>Posted on 03/01/14</em>
-    <li>
-        <a href="#"><img src="http://via.placeholder.com/70x70" alt="Popular Post"></a>
-        <p><a href="#">Lorem ipsum dolor sit amet consectetur adipiscing elit</a></p>
-        <em>Posted on 05/16/14</em>
-    </li>
-    <li>
-        <a href="#"><img src="http://via.placeholder.com/70x70" alt="Popular Post"></a>
-        <p><a href="#">Lorem ipsum dolor sit amet consectetur adipiscing elit</a></p>
-        <em>Posted on 05/16/14</em>
-    </li>
+
+    <?php foreach (\app\models\Item::getPopular() as $item): ?>
+        <li>
+            <a href="<?= \yii\helpers\Url::to(['item/view', 'slug' => $item->slug]) ?>">
+                <img src="<?= \yii\helpers\Url::to(['/images/item/70x70/' . $item->image]) ?>"
+                     alt="<?= $item->title ?>">
+            </a>
+            <p>
+                <a href="<?= \yii\helpers\Url::to(['item/view', 'slug' => $item->slug]) ?>">
+                    <?= \yii\helpers\Html::encode($item->title) ?>
+                </a>
+            </p>
+            <em><?= \Yii::$app->formatter->asDate($item->created_at, 'long'); ?></em>
+        </li>
+    <?php endforeach; ?>
+
 </ul>
 
 <div class="spacing"></div>

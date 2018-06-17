@@ -16,7 +16,7 @@ class Controller extends \yii\web\Controller
     public function notFound($message = null)
     {
         if ($message === null) {
-            $message = 'Strona nie została znaleziona';
+            $message = 'Strona, której szukasz nie istnieje.';
         }
         throw new NotFoundHttpException($message);
     }

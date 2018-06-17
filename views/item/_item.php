@@ -12,7 +12,7 @@ use yii\helpers\Url;
     <div class="box fav">
         <div class="user-bar">
             <div class="content">
-                <h2>
+                <h2 class="ctitle">
                     <a href="<?= Url::to(['item/view', 'slug' => $model->slug]) ?>" class="user">
                        <span class="name">
                            <?= Helpers::cutThis($model->title, 80) ?>
@@ -27,14 +27,14 @@ use yii\helpers\Url;
                 <div class="row">
                     <div class="col-lg-12">
                         <?php foreach ($model->categories as $category): ?>
-                            <a href="#" class="category"><?= $category->name ?></a>
+                            <a href="<?= Url::to(['category/view', 'slug' => $category->slug]) ?>" class="category"><?= $category->name ?></a>
                         <?php endforeach; ?>
                     </div>
                 </div>
 
                 <div class="tag-list">
                     <?php foreach ($model->tags as $tag): ?>
-                        <a href="#">#<?= $tag->name ?></a>
+                        <a href="<?= Url::to(['tag/view', 'slug' => $tag->name]) ?>">#<?= $tag->name ?></a>
                     <?php endforeach; ?>
                 </div>
             </div>
@@ -44,5 +44,9 @@ use yii\helpers\Url;
                 <?= Html::img('@web/images/item/' . $model->image, ['alt' => $model->title, 'class' => 'full-image', 'width' => 610]) ?>
             </a>
         </figure>
+
+        <div class="content">
+            <hr>
+        </div>
     </div>
 </div>

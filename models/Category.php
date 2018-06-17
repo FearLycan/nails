@@ -13,6 +13,7 @@ use yii\db\ActiveRecord;
  * @property string $name
  * @property string $slug
  * @property string $description
+ * @property int $frequency
  * @property int $status
  * @property int $author_id
  * @property string $created_at
@@ -64,7 +65,7 @@ class Category extends ActiveRecord
     {
         return [
             [['description'], 'string'],
-            [['author_id', 'status'], 'integer'],
+            [['author_id', 'status', 'frequency'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['name', 'slug'], 'string', 'max' => 255],
             [['author_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['author_id' => 'id']],

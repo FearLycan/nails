@@ -1,9 +1,20 @@
 <?php
 /* @var $this yii\web\View */
 
+use yii\helpers\Url;
 use yii\widgets\ListView;
 
+$this->title = 'Tag ' . $tag . ' - ' . Yii::$app->params['name'];
+
 ?>
+
+<?php $this->beginBlock('meta') ?>
+<meta property="og:image" content="<?= Url::to('@web/images/seo/seo.jpg', true); ?>"/>
+<meta name="description" content="<?= Yii::$app->params['description'] ?>"/>
+<meta property="og:url" content="<?= Url::to(['tag/view', 'slug' => $tag], true) ?>"/>
+<meta property="og:title" content="<?= $this->title ?>"/>
+<meta property="og:description" content="<?= Yii::$app->params['description'] ?>"/>
+<?php $this->endBlock() ?>
 
 <div id="blue">
     <div class="container">

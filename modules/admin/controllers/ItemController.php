@@ -115,7 +115,11 @@ class ItemController extends Controller
     {
         $model = $this->findModel($id);
 
-        $model->scenario = ItemForm::SCENARIO_UPDATE;
+        if(empty($model)){
+            $this->notFound();
+        }
+
+        //$model->scenario = ItemForm::SCENARIO_UPDATE;
 
         $tags = ItemTag::find()->where(['item_id' => $id])->all();
         $tab = [];
@@ -125,11 +129,11 @@ class ItemController extends Controller
         $model->tags = $tab;
 
         $categories = ItemCategory::find()->where(['item_id' => $id])->all();
-        $tab = [];
+        $cat = [];
         foreach ($categories as $key => $category) {
-            array_push($tab, $category->category->id);
+            array_push($cat, $category->category->id);
         }
-        $model->categories = $tab;
+        $model->categories = $cat;
 
         if ($model->load(Yii::$app->request->post())) {
 
@@ -138,7 +142,7 @@ class ItemController extends Controller
                 Tag::saveTags($model->tags, $model->id);
             }
 
-            if ($model->categories != $tab) {
+            if ($model->categories != $cat) {
                 ItemCategory::deleteConnect($model->id);
                 Category::saveCategory($model->categories, $model->id);
             }
@@ -158,7 +162,7 @@ class ItemController extends Controller
                 }
             }
 
-            //$model->save();
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

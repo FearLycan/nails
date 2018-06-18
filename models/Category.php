@@ -135,4 +135,21 @@ class Category extends ActiveRecord
             ItemCategory::connect($itemID, $id);
         }
     }
+
+    public function frequencyIncrement()
+    {
+        $this->frequency = $this->frequency + 1;
+        $this->save(false, ['frequency']);
+    }
+
+    public function frequencyDecrement()
+    {
+        if ($this->frequency <= 0) {
+            $this->frequency = 0;
+        } else {
+            $this->frequency = $this->frequency - 1;
+        }
+
+        $this->save(false, ['frequency']);
+    }
 }

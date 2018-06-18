@@ -20,7 +20,14 @@ AppAsset::register($this);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php $this->registerCsrfMetaTags() ?>
-    <title><?= Html::encode(Yii::$app->params['name']) ?></title>
+    <title><?= Html::encode($this->title) ?></title>
+    <meta name="keywords" content="<?= Yii::$app->params['keywords'] ?>" />
+    <meta property="fb:pages" content="239323143282506" />
+    <meta property="fb:app_id" content="1063640817146485" />
+    <meta property="og:locale" content="pl_PL" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="<?= Yii::$app->params['name'] ?>" />
+    <?= $this->blocks['meta'] ?>
     <?php $this->head() ?>
 </head>
 <body>

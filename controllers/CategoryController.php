@@ -12,6 +12,14 @@ class CategoryController extends Controller
 {
     public function actionView($slug)
     {
+        $category = Category::find()
+            ->where(['slug' => $slug, 'status' => Category::STATUS_ACTIVE])
+            ->one();
+
+        if(empty($category)){
+            $this->notFound();
+        }
+
         $query = Item::find()
             ->joinWith('categories')
             ->where(['category.slug' => $slug, 'category.status' => Category::STATUS_ACTIVE]);
@@ -30,7 +38,7 @@ class CategoryController extends Controller
 
         return $this->render('view', [
             'dataProvider' => $dataProvider,
-            'category' => Html::encode($slug),
+            'category' => $category,
         ]);
     }
 }

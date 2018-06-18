@@ -5,7 +5,17 @@ use app\components\Helpers;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
+$this->title = $model->title . ' - ' . Yii::$app->params['name'];
+
 ?>
+
+<?php $this->beginBlock('meta') ?>
+    <meta property="og:image" content="<?= Url::to('@web/images/item/thumbnail/' . $model->image, true); ?>"/>
+    <meta name="description" content="<?= Yii::$app->params['description'] ?>"/>
+    <meta property="og:url" content="<?= Url::to(['item/view', 'slug' => $model->slug], true) ?>"/>
+    <meta property="og:title" content="<?= $this->title ?>"/>
+    <meta property="og:description" content="<?= Yii::$app->params['description'] ?>"/>
+<?php $this->endBlock() ?>
 
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
@@ -28,7 +38,9 @@ use yii\helpers\Url;
                             <div class="row">
                                 <div class="col-lg-12">
                                     <?php foreach ($model->categories as $category): ?>
-                                        <a href="#" class="category"><?= $category->name ?></a>
+                                        <a href="<?= Url::to(['category/view', 'slug' => $category->slug]) ?>" class="category">
+                                            <?= $category->name ?>
+                                        </a>
                                     <?php endforeach; ?>
                                 </div>
                             </div>
@@ -76,7 +88,11 @@ use yii\helpers\Url;
                 <div class="row">
                     <div class="col-md-12">
                         <h6>SHARE:</h6>
-                        <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Udostępnij</a></div>
+                        <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/"
+                             data-layout="button_count" data-size="small" data-mobile-iframe="true"><a target="_blank"
+                                                                                                       href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"
+                                                                                                       class="fb-xfbml-parse-ignore">Udostępnij</a>
+                        </div>
                     </div>
                 </div>
             </div>

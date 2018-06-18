@@ -1,14 +1,25 @@
 <?php
 /* @var $this yii\web\View */
 
+use yii\helpers\Url;
 use yii\widgets\ListView;
 
+$this->title = 'Kategoria ' . $category->name . ' - ' . Yii::$app->params['name'];
+
 ?>
+
+<?php $this->beginBlock('meta') ?>
+<meta property="og:image" content="<?= Url::to('@web/images/seo/seo.jpg', true); ?>"/>
+<meta name="description" content="<?= Yii::$app->params['description'] ?>"/>
+<meta property="og:url" content="<?= Url::to(['category/view', 'slug' => $category->slug], true) ?>"/>
+<meta property="og:title" content="<?= $this->title ?>"/>
+<meta property="og:description" content="<?= Yii::$app->params['description'] ?>"/>
+<?php $this->endBlock() ?>
 
 <div id="blue">
     <div class="container">
         <div class="row">
-            <h3><?= $category ?></h3>
+            <h3><?= $category->name ?></h3>
         </div><!-- /row -->
     </div> <!-- /container -->
 </div>

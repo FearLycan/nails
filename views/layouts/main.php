@@ -29,6 +29,9 @@ AppAsset::register($this);
     <meta property="og:site_name" content="<?= Yii::$app->params['name'] ?>" />
     <?= $this->blocks['meta'] ?>
     <?php $this->head() ?>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="<?php echo Yii::$app->request->baseUrl; ?>/images/icon/favicon.ico" type="image/x-icon" />
 </head>
 <body>
 

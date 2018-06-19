@@ -21,17 +21,18 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
-    <meta name="keywords" content="<?= Yii::$app->params['keywords'] ?>" />
-    <meta property="fb:pages" content="239323143282506" />
-    <meta property="fb:app_id" content="1063640817146485" />
-    <meta property="og:locale" content="pl_PL" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="<?= Yii::$app->params['name'] ?>" />
+    <meta name="keywords" content="<?= Yii::$app->params['keywords'] ?>"/>
+    <meta property="fb:pages" content="1140874825995346"/>
+    <meta property="fb:app_id" content="1063640817146485"/>
+    <meta property="og:locale" content="pl_PL"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:site_name" content="<?= Yii::$app->params['name'] ?>"/>
     <?= $this->blocks['meta'] ?>
     <?php $this->head() ?>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="<?php echo Yii::$app->request->baseUrl; ?>/images/icon/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="<?php echo Yii::$app->request->baseUrl; ?>/images/icon/favicon.ico"
+          type="image/x-icon"/>
 </head>
 <body>
 
@@ -98,10 +99,10 @@ AppAsset::register($this);
     <div class="container">
         <div class="row">
             <div class="col-lg-4">
-                <h4>About</h4>
+                <h4>O mnie</h4>
                 <div class="hline-w"></div>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                    industry's standard dummy text ever since the 1500s.</p>
+                <p>Witam, nazywam się Marta.Studiuję kosmetologie na WSIE w Szczecinie.
+                    Hobbystycznie wykonuje manicure i pedicure.</p>
             </div>
             <div class="col-lg-4 col-lg-offset-4">
                 <h4>Dołącz do Nas</h4>

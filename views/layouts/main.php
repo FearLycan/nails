@@ -109,13 +109,13 @@ AppAsset::register($this);
                 <div class="hline-w"></div>
                 <ul class="list-unstyled menu-footer">
                     <li>
-                        <?= Html::a('Polityka prywatnośći', ['/polityka-prywatnosci']) ?>
-                    </li>
-                    <li>
                         <?= Html::a('Reklama', ['/reklama']) ?>
                     </li>
                     <li>
                         <?= Html::a('Kontakt', ['/kontakt']) ?>
+                    </li>
+                    <li>
+                        <?= Html::a('Polityka prywatnośći', ['/polityka-prywatnosci']) ?>
                     </li>
                 </ul>
             </div>

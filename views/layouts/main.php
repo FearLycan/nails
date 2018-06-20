@@ -9,6 +9,7 @@ use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use app\assets\AppAsset;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 ?>
@@ -108,9 +109,9 @@ AppAsset::register($this);
                 <h4>Menu</h4>
                 <div class="hline-w"></div>
                 <ul class="list-unstyled menu-footer">
-                    <li><?= Html::a('Reklama', ['/reklama']) ?></li>
-                    <li><?= Html::a('Kontakt', ['/kontakt']) ?></li>
-                    <li><?= Html::a('Polityka prywatnośći', ['/polityka-prywatnosci']) ?></li>
+                    <li><a href="<?= Url::to(['/reklama'], true) ?>">Reklama</a></li>
+                    <li><a href="<?= Url::to(['/kontakt'], true) ?>">Kontakt</a></li>
+                    <li><a href="<?= Url::to(['/polityka-prywatnosci'], true) ?>">Polityka prywatnośći</a></li>
                 </ul>
             </div>
             <div class="col-lg-4">

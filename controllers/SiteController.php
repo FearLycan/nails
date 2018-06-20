@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\forms\ContactForm;
+use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -57,12 +59,27 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-       /* $categories = Category::find()->all();
+        return $this->render('index', []);
+    }
 
-        $this->view->params['categories'] = $categories;*/
+    public function actionContact($status = false)
+    {
+        $model = new ContactForm();
 
-        return $this->render('index', [
-            //'categories' => $categories
+        if ($model->load(Yii::$app->request->post())) {
+            $ok = $model->send();
+
+            if ($ok) {
+                $status = true;
+                return $this->redirect(['/kontakt', 'status' => $status]);
+            } else {
+                $status = 'error';
+            }
+        }
+
+        return $this->render('contact', [
+            'model' => $model,
+            'status' => $status,
         ]);
     }
 }

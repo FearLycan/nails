@@ -1,68 +1,64 @@
 <?php
 
 /* @var $this yii\web\View */
+
 /* @var $form yii\bootstrap\ActiveForm */
-/* @var $model app\models\ContactForm */
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
 
-$this->title = 'Contact';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Kontakt';
+
 ?>
-<div class="site-contact">
-    <h1><?= Html::encode($this->title) ?></h1>
 
-    <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
-
-        <div class="alert alert-success">
-            Thank you for contacting us. We will respond to you as soon as possible.
-        </div>
-
-        <p>
-            Note that if you turn on the Yii debugger, you should be able
-            to view the mail message on the mail panel of the debugger.
-            <?php if (Yii::$app->mailer->useFileTransport): ?>
-                Because the application is in development mode, the email is not sent but saved as
-                a file under <code><?= Yii::getAlias(Yii::$app->mailer->fileTransportPath) ?></code>.
-                Please configure the <code>useFileTransport</code> property of the <code>mail</code>
-                application component to be false to enable email sending.
-            <?php endif; ?>
-        </p>
-
-    <?php else: ?>
-
-        <p>
-            If you have business inquiries or other questions, please fill out the following form to contact us.
-            Thank you.
-        </p>
-
+<div id="blue">
+    <div class="container">
         <div class="row">
-            <div class="col-lg-5">
+            <h3>Skontaktuj się z nami</h3>
+        </div><!-- /row -->
+    </div> <!-- /container -->
+</div>
 
-                <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
 
-                    <?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
+<div class="site-contact">
+    <div class="row">
+        <div class="col-lg-8 col-xs-12">
+            <h4>Znalazłeś błąd na stronie lub po prostu chcesz do nas napisać? </h4>
+            <div class="hline"></div>
 
-                    <?= $form->field($model, 'email') ?>
+            <p>Skorzystaj z poniższego formularza.</p>
 
-                    <?= $form->field($model, 'subject') ?>
+            <?php if ($status == true): ?>
+                <div class="alert alert-success" role="alert">
+                    <strong>Świetnie!</strong> Twoja wiadomość została wysłana.
+                </div>
+            <?php elseif ($status == 'error'): ?>
+                <div class="alert alert-danger" role="alert">
+                    <strong>Uwaga!</strong> Wystąpił błąd, proszę spóbować później.
+                </div>
+            <?php endif; ?>
 
-                    <?= $form->field($model, 'body')->textarea(['rows' => 6]) ?>
+            <?= $this->render('_contact-form', [
+                'model' => $model,
+            ]) ?>
+        </div><!-- --/col-lg-8 ---->
 
-                    <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
-                        'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
-                    ]) ?>
+        <div class="col-lg-4">
+            <h4>Dodatkowe informacje</h4>
+            <div class="hline" style="margin-bottom: 20px;"></div>
 
-                    <div class="form-group">
-                        <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
-                    </div>
-
-                <?php ActiveForm::end(); ?>
-
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Reklama</h3>
+                </div>
+                <div class="panel-body">
+                    W sprawie reklamy pisz na
+                    <a style="font-size: 17px; font-weight: bold;"
+                       href="mailto:<?= Yii::$app->params['email'] ?>"><?= Yii::$app->params['email'] ?></a>
+                </div>
             </div>
-        </div>
 
-    <?php endif; ?>
+        </div>
+    </div>
 </div>

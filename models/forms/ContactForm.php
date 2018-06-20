@@ -26,17 +26,32 @@ class ContactForm extends ActiveRecord
         return [
             [['message'], 'string'],
             [['email'], 'email'],
-            [['name'], 'string', 'max' => 120],
+            [['name', 'email'], 'string', 'max' => 120],
+            [['name', 'email', 'message'], 'required'],
         ];
     }
 
 
     public function send()
     {
-        Yii::$app->mailer->compose('contact', ['email' => $this])
+        $email = Yii::$app->mailer->compose('contact', ['email' => $this])
             ->setFrom(Yii::$app->params['email'])
             ->setTo('damian.bronczyk@gmail.com')
             ->setSubject('Wiadomość ze strony Nails by Martha')
             ->send();
+
+        return $email;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function attributeLabels()
+    {
+        return [
+            'name' => 'Nazwa',
+            'email' => 'Adres email',
+            'message' => 'Treść wiadomości',
+        ];
     }
 }

@@ -104,7 +104,22 @@ AppAsset::register($this);
                 <p>Witam, nazywam się Marta.Studiuję kosmetologie na WSIE w Szczecinie.
                     Hobbystycznie wykonuje manicure i pedicure.</p>
             </div>
-            <div class="col-lg-4 col-lg-offset-4">
+            <div class="col-lg-4">
+                <h4>Menu</h4>
+                <div class="hline-w"></div>
+                <ul class="list-unstyled menu-footer">
+                    <li>
+                        <?= Html::a('Polityka prywatnośći', ['/polityka-prywatnosci']) ?>
+                    </li>
+                    <li>
+                        <?= Html::a('Reklama', ['/reklama']) ?>
+                    </li>
+                    <li>
+                        <?= Html::a('Kontakt', ['/kontakt']) ?>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-4">
                 <h4>Dołącz do Nas</h4>
                 <div class="hline-w"></div>
                 <p>
@@ -113,9 +128,6 @@ AppAsset::register($this);
                     </a>
                 </p>
             </div>
-            <div class="col-lg-4">
-            </div>
-
         </div>
     </div>
 </div>

@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use Yii;
 use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
@@ -151,5 +152,23 @@ class Category extends ActiveRecord
         }
 
         $this->save(false, ['frequency']);
+    }
+
+    public static function getShowCastCategory()
+    {
+        $connection = Yii::$app->getDb();
+
+        $sql = "SELECT COUNT(*) AS count, category.slug, category.name
+                FROM item
+                LEFT JOIN item_category ON item.id = item_category.item_id
+                JOIN category ON category.id = item_category.category_id
+                WHERE category.status = :status
+                GROUP BY item.id
+                ORDER BY count ASC";
+
+        $command = $connection->createCommand($sql, ['status' => Category::STATUS_ACTIVE]);
+        $result = $command->queryAll();
+
+        return $result;
     }
 }

@@ -6,7 +6,6 @@ use app\components\Controller;
 use app\models\Category;
 use app\models\Item;
 use yii\data\ActiveDataProvider;
-use yii\helpers\Html;
 
 class CategoryController extends Controller
 {
@@ -16,7 +15,7 @@ class CategoryController extends Controller
             ->where(['slug' => $slug, 'status' => Category::STATUS_ACTIVE])
             ->one();
 
-        if(empty($category)){
+        if (empty($category)) {
             $this->notFound();
         }
 

@@ -80,9 +80,9 @@ AppAsset::register($this);
             <div class="row">
                 <div class="col-lg-12">
                     <ul class="category-menu">
-                        <?php foreach (Category::find()->where(['status' => Category::STATUS_ACTIVE])->all() as $category): ?>
+                        <?php foreach (Category::getShowCastCategory() as $category): ?>
                             <li>
-                                <a href="<?= \yii\helpers\Url::to(['category/view', 'slug' => $category->slug]) ?>"><?= $category->name ?></a>
+                                <a href="<?= \yii\helpers\Url::to(['category/view', 'slug' => $category['slug']]) ?>"><?= $category['name'] ?></a>
                             </li>
                         <?php endforeach; ?>
                     </ul>
